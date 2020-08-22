@@ -1,8 +1,11 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "ACAA,OAAO,CAAC,0EAAI;AACZ,OAAO,CAAC,4FAAI",
     "sources": [
-        "../scss/style.scss"
+        "../scss/style.scss",
+        "../scss/_fonts.scss",
+        "../scss/_general.scss",
+        "../scss/_color.scss"
     ],
     "names": [],
     "file": "style.css"

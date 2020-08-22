@@ -1,2 +1,10 @@
-@import 'fonts';
-@import 'general';
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$roboto: 'Roboto', sans-serif;
+$play: 'Play', sans-serif;
+$thin: 300;
+$normal: 400;
+$medium: 500;
+$semibold: 700;
+$bold: 900;
