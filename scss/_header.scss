@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     //  Header Menu
 
@@ -42,6 +43,141 @@
         }
     }
 
+    // Burger menu button
+
+    .header-burger {
+        width: 30px;
+        height: 17px;
+        position: absolute;
+        right: 20px;
+        display: none;
+        transform-origin: center;
+        cursor: pointer;
+
+        @keyframes burgertoprev {
+            0% {
+                
+                top: calc(50% - 1.5px);
+                transform: rotate(45deg);
+                transition-delay: 0.3s;
+            }
+            50% {
+                top: calc(50% - 1.5px);
+            }
+            75% {
+                top: calc(50% - 1.5px);
+            }
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes burgerbottomrev {
+            0% {
+                bottom: calc(50% - 1.5px);
+                transform: rotate(-45deg);
+                transition-delay: 0.3s;
+                
+            }
+            50% {
+                bottom: calc(50% - 1.5px);
+            }
+            75% {
+                bottom: calc(50% - 1.5px); 
+            }
+            100% {
+                bottom: 0;
+            }
+        }
+
+        &:before, &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: $white;
+            z-index: 5;
+            border-radius: 50px;
+            transform: rotate(0);
+           
+        }
+
+        &:before {
+            top: 0;
+            animation: burgertoprev 0.2s ease-in-out;
+        }
+
+        &:after {
+            bottom: 0;
+            animation: burgerbottomrev 0.2s ease-in-out;
+        }
+        
+        .burger__button {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: $white;
+            top: calc(50% - 1.5px);
+            z-index: 5;
+            border-radius: 50px;
+            transition: 0.2s ease-in-out;
+            transition-delay: 0.2s;
+        }
+
+        &.active {
+
+            &:before {
+                animation: burgertop 0.2s ease-in-out;
+                animation-fill-mode: both;
+            }
+
+            &:after {
+                animation: burgerbottom 0.2s ease-in-out;
+                animation-fill-mode: both;
+            }
+
+            .burger__button {
+                transform: scale(0);
+                transition: 0.2s ease-in-out;
+                transition-delay: 0.2s;
+            }
+
+            @keyframes burgertop {
+                0% {
+                    top: 0;
+                }
+                50% {
+                    top: calc(50% - 1.5px);
+                }
+                75% {
+                    top: calc(50% - 1.5px);
+                }
+                100% {
+                    top: calc(50% - 1.5px);
+                    transform: rotate(45deg);
+                    transition-delay: 0.3s;
+                }
+            }
+
+            @keyframes burgerbottom {
+                0% {
+                    bottom: 0;
+                }
+                50% {
+                    bottom: calc(50% - 1.5px);
+                }
+                75% {
+                    bottom: calc(50% - 1.5px); 
+                }
+                100% {
+                    bottom: calc(50% - 1.5px);
+                    transform: rotate(-45deg);
+                    transition-delay: 0.3s;
+                }
+            }
+        }
+    }
     // Header Logo
 
     .header-logo {
@@ -59,7 +195,7 @@
             width: 150%;
             height: 100%;
             top: 50px;
-            left: -28px;
+            left: -30px;
             background-color: $blue-light;
             border-radius: 50%;
             z-index: -1;
@@ -144,4 +280,132 @@
         justify-content: center;
         padding-left: 30px;
       }
+}
+
+@media (max-width: 1141px) {
+    .header-block {
+        .header-menu {
+            .header-navbar {
+                &__link {
+                    margin: 0;
+                }
+            }
+        }
+
+        .header-tel-block {
+            .tel-mosk {
+                border-right: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 998px) {
+    .header {
+        z-index: 5;
+    }
+    .header-block {
+        position: relative;
+        
+        .header-menu {
+            position: absolute;
+            width: 100%;
+            top: 130px;
+            right: 0;
+            background-color: $blue-light;
+            transform-origin: top;
+            transform: scale(0);
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            transition: 0.2s ease;
+
+            &.active {
+                transform: scale(1);
+            }
+            
+            .header-navbar {
+                &__link {
+                    margin: 0;
+                }
+            }
+        }
+
+        .header-logo {
+            margin: 0 auto;
+        }
+        
+        .header-burger {
+            display: block;
+        }
+
+        .header-tel-block {
+            position: absolute;
+            flex-direction: column;
+            left: 0;
+
+            .tel-mosk {
+                width: 100%;
+                border-right: none;
+                margin:0 0 20px 20px;
+
+            }
+
+            .tel-free {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .header-block {
+        min-height: 80px;
+        .header-menu {
+            height: 100vh;
+            top: 80px;
+            padding-top: 30px;
+            box-sizing: border-box;
+            .header-navbar {
+                height: 100%;
+                flex-direction: column;
+
+                &__link {
+                   margin-bottom: 10px;
+                   overflow: auto;
+                }
+            }
+        }
+
+        .header-logo {
+            &:before {
+                top: 30px;
+            }
+        }
+
+        .header-tel-block {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .header-block {
+        .header-manu {
+            .hedaer-navbar {
+                transition-delay: 0.3s;
+            }
+        }
+        .header-burger {
+            bottom: -25px;
+            left: calc(50% - 10px);
+            transform: rotate(720deg);
+            transition: 0.4s ease-in-out;
+
+            &.active {
+                left: 90%;
+                transform: rotate(0);
+                transition: 0.4s ease-in-out;
+            }
+        }
+    }
 }
